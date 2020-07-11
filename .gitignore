@@ -130,3 +130,7 @@ dmypy.json
 
 # Jetbrains IDE
 .idea/
+
+taylogger/data.json
+data.json
+*/data.json

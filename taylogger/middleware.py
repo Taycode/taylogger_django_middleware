@@ -1,3 +1,7 @@
+from .utils import TayLoggerAPIConsumer
+from django.conf import settings
+
+
 class ErrorLoggerMiddleware:
 
     def __init__(self, get_response):
@@ -8,4 +12,15 @@ class ErrorLoggerMiddleware:
         return response
 
     def process_exception(self, request, exception):
-        print(exception)
+        if hasattr(settings, "TAYLOGGER_API_KEY"):
+
+            api_key = settings.TAYLOGGER_API_KEY
+            taylogger_consumer = TayLoggerAPIConsumer(api_key)
+
+            if hasattr(settings, "EXCEPTION_GROUP_ID"):
+                taylogger_consumer.create_log({"group": 2, "message": str(exception)})
+            else:
+                print('\x1b[3;37;41m' + "WARNING!, You have not added your Taylogger Group Id to settings" + '\x1b[0m')
+
+        else:
+            print('\x1b[3;37;41m' + "WARNING!, You have not added your Taylogger API key to settings" + '\x1b[0m')
