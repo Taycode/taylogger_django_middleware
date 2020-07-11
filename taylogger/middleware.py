@@ -18,7 +18,8 @@ class ErrorLoggerMiddleware:
             taylogger_consumer = TayLoggerAPIConsumer(api_key)
 
             if hasattr(settings, "EXCEPTION_GROUP_ID"):
-                taylogger_consumer.create_log({"group": 2, "message": str(exception)})
+                group_id = settings.EXCEPTION_GROUP_ID
+                taylogger_consumer.create_log({"group": group_id, "message": str(exception)})
             else:
                 print('\x1b[3;37;41m' + "WARNING!, You have not added your Taylogger Group Id to settings" + '\x1b[0m')
 
