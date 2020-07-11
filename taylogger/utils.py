@@ -8,7 +8,7 @@ class TayLoggerAPIConsumer:
 
 
     def __init__(self, token):
-        self.url = "http://tayloggerapi.herokuapp.com"
+        self.url = "http://tayloggerapi.herokuapp.com/"
         self.api_key = token
 
     def create_log_group(self, data):
