@@ -8,6 +8,11 @@ log message of the exception.
 Quick start
 -----------
 
+First, you would need to install the middleware::
+
+    pip install django-taylogger-middleware
+
+
 1. Add "polls" to your INSTALLED_APPS setting like this::
 
     INSTALLED_APPS = [
@@ -23,12 +28,11 @@ Quick start
     ]
 
 
-3. Then set the following variables in the settings.py
+3. Then set the following variables in the settings.py::
 
-```python
-EXCEPTION_GROUP_ID = "YOUR_EXCEPTION_GROUP_ID"
-TAYLOGGER_API_KEY = "YOUR_TAYLOGGER_API_KEY"
-```
+
+    EXCEPTION_GROUP_ID = "YOUR_EXCEPTION_GROUP_ID"
+    TAYLOGGER_API_KEY = "YOUR_TAYLOGGER_API_KEY"
 
 
 4. You can now use your app and Taylogger Middleware will catch 
